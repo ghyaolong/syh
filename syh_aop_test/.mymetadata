@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="syh_aop_test"
+  id="myeclipse.1477190209769"
+  context-root="/syh_aop_test"
+  j2ee-spec="6.0"
+  archive="syh_aop_test.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
