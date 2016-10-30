@@ -1,0 +1,118 @@
+
+aop
+1.程序中常见的功能，引申未切面，和业务逻辑无关的。重复性的
+2.oop的不足
+实例程序
+3.引出aop
+  3.1 aop相关怪念
+
+  3.2 增强类型
+  			前置增强（org.springframework.aop.BeforeAdvice）
+  				服务员端盘子例子(com.smart.advice.*)
+  			后置增强（org.springframework.aop.AfterReturningAdvice）
+  			环绕增强（org.aopalliance.intercept.MethodInterceptor）
+  			异常抛出增强（org.springframework.aop.ThrowsAdvice）
+  			引介增强（org.springframework..aop.IntroductionInterceptor）
+
+  3.3 创建切面 
+  		3.3.1  切点 （有选择的织入目标类某些特定的方法中，实用切点定位连接点） （org.springframework.aop.Pointcut）
+  					Pointcut:  
+  							ClassFilter(定位到某些特定的类) 
+  									matches(Class clazz)
+  							MethodMatcher（某些特定的方法上）
+  					Pointcut就拥有了描述某些类某些方法的能力。
+
+  					spring支持两种方法匹配器：
+  						静态方法匹配器   
+  							仅对方法名签名（包括方法名入参类型及顺序）进行匹配
+  						动态方法匹配器 （运行期检查方法入参的值）
+  		3.3.2 切点类型
+  			静态方法切点（org.springframework.aop.support.StaticMethodPointcut）
+  			动态方法切点(org.springframework.aop.support.DynamicMethodMatcherPointcut)
+  			注解切点(org.springframework.aop.support.AnnotationMatchingPointcut)
+  			表达式切点 (org.springframework.aop.support.ExpresssionPointcut)
+  			流程切点
+  			符合切点
+  		3.3.3 
+  			静态方法名匹配切面
+
+
+
+  	3.4自动创建代理
+  	3.5基于@AspectJ 配置切面（JDK1.5+）
+
+  			切点表达式函数：见图片
+  			切点的信息构成：见图片
+
+  		如何配置使用@AspectJ切面
+  			<aop:aspectj-autoproxy/>	
+
+  		不通增强类型
+  			@Before
+  			@AfterReturning
+  			@Around
+  			@AfterThrowing
+  			@After
+  			@DeclareParents
+
+  	3.6基于Schema配置切面
+
+  			如果项目不能使用JDK1.5+，就无法使用@AspectJ注解的切面了。Spring提供了基于Schema配置的方法，完全可以替代基于 @Aspect注解声明切面的方式了。
+
+  		3.6.1 一个简单配置的切面
+  			aspect下相关类
+  		3.6.2配置命名切点
+
+
+ 其他知识点：
+ 	自定义注解:自定义注解的作用：在反射中获取注解，以取得注解修饰的类、方法或属性的相关解释。
+
+
+
+
+
+
+
+
+  3.4 aop简单实现
+
+  3.5 aop相关jar包
+  	     spring-aop.jar
+  	     aspectjrt.jar
+  	     aspectjtools.jar
+  	     
+
+
+
+
+
+
+
+支付接口说明：
+
+url:http://localhost:8080/syh_spay_service/app/pay.do
+请求方式：post
+参数：
+token:token标识
+ruleIds：规则集合
+goodsList：商品定向规则集合
+userId：用户id
+storeId：商户id
+orderId：订单id
+money：消费总金额
+payTime：支付时间
+payPassword：用户支付密码
+
+
+
+具体参数格式如下：
+ruleIds:[{"ruleId":"1"},{"ruleId":"2"},{"ruleId":"2"}]
+
+goodsList:[{"direct1":"123","money":"30"},{"direct1":"123","direct2":"456","money":"50"},{"direct1":"123","direct2":"456","direct3":"789","money":"100"}]
+
+
+
+冻结状态：
+
+
+{"bool":"true","msg":"操作成功"}
